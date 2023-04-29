@@ -10,33 +10,36 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="1*"></RowDefinition>
             <RowDefinition Height="1*"></RowDefinition>
-            <RowDefinition Height="3*"></RowDefinition>
+            <RowDefinition Height="2.5*"></RowDefinition>
+            <RowDefinition Height="0.2*"></RowDefinition>
             <RowDefinition Height="1*"></RowDefinition>
-            <RowDefinition Height="2*"></RowDefinition>
-            <RowDefinition></RowDefinition>
+            <RowDefinition Height="0.2*"></RowDefinition>
+            <RowDefinition Height="1*"></RowDefinition>
+            <RowDefinition Height="0.5*"></RowDefinition>
+            <RowDefinition Height="0.5*"></RowDefinition>
+            <RowDefinition>
+            </RowDefinition>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="1*"></ColumnDefinition>
-            <ColumnDefinition Width="4*"></ColumnDefinition>
+            <ColumnDefinition Width="0.2*"></ColumnDefinition>
+            <ColumnDefinition Width="2.5*"></ColumnDefinition>
+            <ColumnDefinition Width="0.2*"></ColumnDefinition>
+            <ColumnDefinition Width="2.5*"></ColumnDefinition>
             <ColumnDefinition Width="1*"></ColumnDefinition>
         </Grid.ColumnDefinitions>
-        <Label Grid.Row="0" Grid.Column="1" HorizontalAlignment="Center">Formularz</Label>
-            <Label Grid.Row="1" Grid.Column="1" HorizontalAlignment="Center">Pytanie</Label>
-            <TextBox Grid.Row="2" Grid.Column="1">Tutaj jakie będzie pytani</TextBox>
-            <Label Grid.Row="4" Grid.Column="1">Odpowiedzi</Label>
-            <TextBox Grid.Row="5" Grid.Column="1">2</TextBox>
-            <!--<Button Content="Button1"/>
-        <WrapPanel Grid.Column="1" Grid.Row="1" HorizontalAlignment="Center">
-            <Button Content="1" />
-            <Button Content="2" />
-        </WrapPanel>
-        <StackPanel>
-            <Button Content="1" />
-            <Button Content="2" />
-        </StackPanel>
-        <StackPanel Grid.Row="1" Grid.Column="2">
-            <Button Content="1" />
-            <Button Content="2" />
-        </StackPanel>-->
+        <Label Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="4" HorizontalAlignment="Center">Pytanie 1 z x</Label>
+        <TextBox Grid.Row="2" Grid.Column="1"  Grid.ColumnSpan="4" HorizontalAlignment="Center" >Tutaj jakie będzie pytanie</TextBox>
+        <RadioButton Grid.Row="4" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center"></RadioButton>
+        <TextBox Grid.Row="4" Grid.Column="2">Odp_1</TextBox>
+        <RadioButton Grid.Row="4" Grid.Column="3" VerticalAlignment="Center" HorizontalAlignment="Center"></RadioButton>
+        <TextBox Grid.Row="4" Grid.Column="4">Odp_2</TextBox>
+        <RadioButton Grid.Row="6" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center"></RadioButton>
+        <TextBox Grid.Row="6" Grid.Column="2">Odp_3</TextBox>
+        <RadioButton Grid.Row="6" Grid.Column="3" VerticalAlignment="Center" HorizontalAlignment="Center"></RadioButton>
+        <TextBox Grid.Row="6" Grid.Column="4">Odp_4</TextBox>
+        <Button  Grid.Row="8" Grid.Column="2">Poprzednie pytanie</Button>
+        <Button  Grid.Row="8" Grid.Column="4">Kolejne pytanie</Button>
+        <Button  Grid.Row="8" Grid.Column="5">Menu</Button>
     </Grid>
 </Window>
