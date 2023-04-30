@@ -12,6 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using wpf___projekt.Model;
+using wpf___projekt.ViewModel;
 
 namespace wpf___projekt
 {
@@ -23,6 +25,16 @@ namespace wpf___projekt
         public MainWindow()
         {
             InitializeComponent();
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            DataAccess.ReadData();
+        }
+
+        private void Next_question(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }
