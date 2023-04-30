@@ -10,6 +10,7 @@ namespace wpf___projekt.Model
     {
         private int Id;
         private int Name;
-        private int[] Answears2;
+        private int[][] Answears2;
     }
+
 }

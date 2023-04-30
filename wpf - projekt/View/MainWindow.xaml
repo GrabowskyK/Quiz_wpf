@@ -38,27 +38,41 @@
                  Grid.Column="1" 
                  Grid.ColumnSpan="4" 
                  Text="{Binding Name}"></TextBox>
-        <RadioButton Grid.Row="4" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center"></RadioButton>
+        <CheckBox Grid.Row="4" 
+                  Grid.Column="1" 
+                  x:Name="checkbox_A"
+                  VerticalAlignment="Center" 
+                  HorizontalAlignment="Center"
+                  IsChecked="{Binding IsCheck_A}"
+                  ></CheckBox>
         <TextBox Grid.Row="4" 
                  Grid.Column="2" 
                  Text="{Binding Answer_A}"></TextBox>
-        <RadioButton Grid.Row="4" 
+        <CheckBox Grid.Row="4" 
                      Grid.Column="3" 
-                     VerticalAlignment="Center" HorizontalAlignment="Center"></RadioButton>
+                   x:Name="checkbox_B"
+                     VerticalAlignment="Center" 
+                  HorizontalAlignment="Center"
+                  CommandParameter="1"></CheckBox>
         <TextBox Grid.Row="4" 
                  Grid.Column="4" 
                  Text="{Binding Answer_B}"></TextBox>
-        <RadioButton Grid.Row="6" 
-                     Grid.Column="1" 
-                     VerticalAlignment="Center" 
-                     HorizontalAlignment="Center"></RadioButton>
+        <CheckBox Grid.Row="6" 
+                  Grid.Column="1" 
+                  x:Name="checkbox_C"
+                  VerticalAlignment="Center" 
+                  HorizontalAlignment="Center"
+                  CommandParameter="2"></CheckBox>
         <TextBox Grid.Row="6" 
                  Grid.Column="2" 
-                 Text="{Binding Answer_C}"></TextBox>
-        <RadioButton Grid.Row="6" 
-                     Grid.Column="3" 
-                     VerticalAlignment="Center" 
-                     HorizontalAlignment="Center"></RadioButton>
+                 Text="{Binding Answer_C}"
+                 ></TextBox>
+        <CheckBox Grid.Row="6" 
+                  Grid.Column="3" 
+                  x:Name="checkbox_D"
+                  VerticalAlignment="Center" 
+                  HorizontalAlignment="Center"
+                  CommandParameter="3"></CheckBox>
         <TextBox Grid.Row="6" 
                  Grid.Column="4" 
                  Text="{Binding Answer_D}"></TextBox>

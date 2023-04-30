@@ -6,7 +6,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Input;
+using System.Windows.Interop;
 using wpf___projekt.Model;
 using wpf___projekt.ViewModel.BaseClass;
 
@@ -27,13 +29,13 @@ namespace wpf___projekt.ViewModel
         }
 
         public ICommand StartQuiz { get; set; }
-
         private void StarQuizFunc(object obj)
         {
             LoadData(0);
         }
         private void NextQuestionFunc(object obj)
         {
+            var a = _isCheck_A;
             if(indexList < Question.Answers.Count-1)
             {
                 indexList++;
@@ -76,9 +78,32 @@ namespace wpf___projekt.ViewModel
 
         }
 
+        
         public ICommand NextQuestion { get; set; }
         public ICommand PreviousQuestion { get; set; }
         public ICommand Add { get; set; }
+
+
+
+        private bool _isCheck_A;
+        public bool IsCheck_A
+        {
+            get
+            {
+                return _isCheck_A;
+            }
+            set
+            {
+                _isCheck_A = value;
+                
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(IsCheck_A)));
+            }
+        }
+        
+
+
+
+
         private string _name;
         private string _answer_A;
         private string _answer_B;
