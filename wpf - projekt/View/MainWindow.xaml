@@ -7,8 +7,7 @@
         xmlns:vm="clr-namespace:wpf___projekt.ViewModel"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-
-        <Window.DataContext>
+    <Window.DataContext>
             <vm:MainViewModel x:Name="mainViewModel"/>
         </Window.DataContext>
     <Grid>
@@ -33,6 +32,9 @@
             <ColumnDefinition Width="2.5*"></ColumnDefinition>
             <ColumnDefinition Width="1*"></ColumnDefinition>
         </Grid.ColumnDefinitions>
+
+        <ContentControl Content="{Binding SelectedViewModel}"/>
+
         <Label Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="4" HorizontalAlignment="Center">Pytanie 1 z x</Label>
         <TextBox Grid.Row="2" 
                  Grid.Column="1" 
@@ -53,7 +55,8 @@
                    x:Name="checkbox_B"
                      VerticalAlignment="Center" 
                   HorizontalAlignment="Center"
-                  CommandParameter="1"></CheckBox>
+                  IsChecked="{Binding IsCheck_B}"
+                    ></CheckBox>
         <TextBox Grid.Row="4" 
                  Grid.Column="4" 
                  Text="{Binding Answer_B}"></TextBox>
@@ -62,7 +65,7 @@
                   x:Name="checkbox_C"
                   VerticalAlignment="Center" 
                   HorizontalAlignment="Center"
-                  CommandParameter="2"></CheckBox>
+                  IsChecked="{Binding IsCheck_C}"></CheckBox>
         <TextBox Grid.Row="6" 
                  Grid.Column="2" 
                  Text="{Binding Answer_C}"
@@ -72,6 +75,7 @@
                   x:Name="checkbox_D"
                   VerticalAlignment="Center" 
                   HorizontalAlignment="Center"
+                  IsChecked="{Binding IsCheck_D}"
                   CommandParameter="3"></CheckBox>
         <TextBox Grid.Row="6" 
                  Grid.Column="4" 
