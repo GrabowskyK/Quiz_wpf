@@ -44,43 +44,47 @@
                  Grid.Column="1" 
                  Grid.ColumnSpan="4" 
                  Text="{Binding Name}"></TextBox>
-        <CheckBox Grid.Row="4" 
+        <RadioButton Grid.Row="4" 
                   Grid.Column="1" 
                   x:Name="checkbox_A"
                   VerticalAlignment="Center" 
                   HorizontalAlignment="Center"
+                  Command="{Binding DisableLockNextQuestionButton}"
                   IsChecked="{Binding IsCheck_A}"
-                  ></CheckBox>
+                  ></RadioButton>
         <TextBox Grid.Row="4" 
                  Grid.Column="2" 
                  Text="{Binding Answer_A}"></TextBox>
-        <CheckBox Grid.Row="4" 
+        <RadioButton Grid.Row="4" 
                      Grid.Column="3" 
-                   x:Name="checkbox_B"
-                     VerticalAlignment="Center" 
-                  HorizontalAlignment="Center"
-                  IsChecked="{Binding IsCheck_B}"
-                    ></CheckBox>
+                     x:Name="checkbox_B"
+                    VerticalAlignment="Center" 
+                    HorizontalAlignment="Center"
+                    Command="{Binding DisableLockNextQuestionButton}"
+                    IsChecked="{Binding IsCheck_B}"
+                    ></RadioButton>
         <TextBox Grid.Row="4" 
                  Grid.Column="4" 
                  Text="{Binding Answer_B}"></TextBox>
-        <CheckBox Grid.Row="6" 
+        <RadioButton Grid.Row="6" 
                   Grid.Column="1" 
                   x:Name="checkbox_C"
                   VerticalAlignment="Center" 
                   HorizontalAlignment="Center"
-                  IsChecked="{Binding IsCheck_C}"></CheckBox>
+                  Command="{Binding DisableLockNextQuestionButton}"
+                  IsChecked="{Binding IsCheck_C}"></RadioButton>
         <TextBox Grid.Row="6" 
                  Grid.Column="2" 
                  Text="{Binding Answer_C}"
                  ></TextBox>
-        <CheckBox Grid.Row="6" 
+        <RadioButton Grid.Row="6" 
                   Grid.Column="3" 
                   x:Name="checkbox_D"
                   VerticalAlignment="Center" 
                   HorizontalAlignment="Center"
                   IsChecked="{Binding IsCheck_D}"
-                  CommandParameter="3"></CheckBox>
+                  Command="{Binding DisableLockNextQuestionButton}"
+                  CommandParameter="3"></RadioButton>
         <TextBox Grid.Row="6" 
                  Grid.Column="4" 
                  Text="{Binding Answer_D}"></TextBox>

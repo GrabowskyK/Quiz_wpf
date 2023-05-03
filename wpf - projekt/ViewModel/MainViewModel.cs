@@ -1,6 +1,7 @@
 ﻿using System;
 using System.ComponentModel;
 using System.Linq;
+using System.Windows.Controls;
 using System.Windows.Input;
 using wpf___projekt.Model;
 using wpf___projekt.ViewModel.BaseClass;
@@ -15,7 +16,6 @@ namespace wpf___projekt.ViewModel
         private Player player = new Player();
 
 
-
         private static bool isRun = true;
         private int indexList = 0;
         public MainViewModel()
@@ -23,9 +23,11 @@ namespace wpf___projekt.ViewModel
             NextQuestion = new RelayCommand(NextQuestionFunc);
             PreviousQuestion = new RelayCommand(PreviousQuestionFunc);
             StartQuiz = new RelayCommand(StarQuizFunc);
+            DisableLockNextQuestionButton = new RelayCommand(DisableLockNextQuestionButtonFunc);
         }
 
-        public ICommand StartQuiz { get; set; }
+        
+
         private void StarQuizFunc(object obj)
         {
             LoadData(0);
@@ -33,7 +35,7 @@ namespace wpf___projekt.ViewModel
         private void NextQuestionFunc(object obj)
         {
             setPlayerAnswers();
-            //LoadAnswersFromQuestions();
+            //EnabledNextQuestion = false;
             if (indexList < Question.Questions.Count - 1)
             {
                 indexList++;
@@ -49,6 +51,7 @@ namespace wpf___projekt.ViewModel
         private void PreviousQuestionFunc(object obj)
         {
             setPlayerAnswers();
+            EnabledNextQuestion = true;
             if (indexList > 0)
             {
                 indexList--;
@@ -61,7 +64,6 @@ namespace wpf___projekt.ViewModel
                 LoadData(indexList);
             }
             
-
             LoadAnswersFromQuestions();
         }
 
@@ -84,13 +86,9 @@ namespace wpf___projekt.ViewModel
                 EnabledPreviousQuestion = true;
             }
 
-            if (indexList == Question.Questions.Count-1)
+            if(indexList ==  Question.Questions.Count - 1)
             {
                 EnabledNextQuestion = false;
-            }
-            else
-            {
-                EnabledNextQuestion = true;
             }
 
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Name)));
@@ -117,29 +115,35 @@ namespace wpf___projekt.ViewModel
                 if(player.answersPlayer.ElementAt(indexList) >= 0 &&  3 >= player.answersPlayer.ElementAt(indexList))
                 {
                     alreadyExist = true;
+                    EnabledNextQuestion = true;
                 }
             }
             catch (Exception ex)
             {
                 alreadyExist = false;
+                EnabledNextQuestion = false;
             }
             //bool alreadyExist = false;
 
-            var chooseOption = 0;
+            var chooseOption = 4;
             if (_isCheck_A == true)
             {
+                IsCheck_A = true;
                 chooseOption = 0;
             }
             else if (_isCheck_B == true)
             {
+                IsCheck_B = true;
                 chooseOption = 1;
             }
             else if (_isCheck_C == true)
             {
+                IsCheck_C = true;
                 chooseOption = 2;
             }
             else if (_isCheck_D == true)
             {
+                IsCheck_D = true;
                 chooseOption = 3;
             }
             if (alreadyExist)
@@ -192,10 +196,28 @@ namespace wpf___projekt.ViewModel
 
             }
         }
+        private void DisableLockNextQuestionButtonFunc(object obj)
+        {
+            if (indexList != Question.Questions.Count - 1)
+            {
+                EnabledNextQuestion = true;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(EnabledNextQuestion)));
+            }
+
+        }
+
+
+
         public ICommand NextQuestion { get; set; }
         public ICommand PreviousQuestion { get; set; }
         public ICommand Add { get; set; }
+        public ICommand StartQuiz { get; set; }
+        public ICommand DisableLockNextQuestionButton { get; set; }
+        
 
+        
+
+        
 
         private bool _isCheck_A;
         public bool IsCheck_A
@@ -207,6 +229,7 @@ namespace wpf___projekt.ViewModel
             set
             {
                 _isCheck_A = value;
+    
                 PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(IsCheck_A)));
             }
         }
