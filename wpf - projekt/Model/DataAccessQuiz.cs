@@ -11,7 +11,7 @@ namespace wpf___projekt.Model
     {
         //static SQLiteConnection conn = new SQLiteConnection(@"Data Source=C:\Users\grabe\Desktop\Question.db;Version=3");
         static SQLiteConnection conn = new SQLiteConnection(@"Data Source=C:\Users\grabe\Desktop\quiz.db;Version=3");
-        private static void ReadData(SQLiteConnection conn)
+        private static void ReadData(SQLiteConnection conn, string zapytanie)
         {
             SQLiteDataReader reader;
             SQLiteCommand command;
@@ -31,12 +31,12 @@ namespace wpf___projekt.Model
             }
 
         }
-        public static void ReadData()
+        public static void ReadData(string zapytanie)
         {
             try
             {
                 conn.Open();
-                ReadData(conn);
+                ReadData(conn, zapytanie);
             }
             catch (Exception ex)
             {

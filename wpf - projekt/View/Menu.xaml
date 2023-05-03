@@ -31,15 +31,21 @@
                 >Załaduj z bazy</Button>
         <ListBox 
             x:Name="listBoxQuiz"
+            SelectedItem="{Binding SelectedItem}"
             ItemsSource="{Binding Quizies}"
             Grid.Row="5"
             Grid.Column="2">
             <ListBox.ItemTemplate>
                 <DataTemplate>
-                    <TextBlock Text="{Binding}"></TextBlock>
+                    <ListBoxItem Content="{Binding}" >
+                    </ListBoxItem>
                 </DataTemplate>
             </ListBox.ItemTemplate>
-            
-                    </ListBox>
+        </ListBox>
+        <Button
+            Grid.Column="3"
+            Grid.Row="4"
+            Command="{Binding open2}"
+            >Wybierz</Button>
     </Grid>
 </Window>

@@ -31,7 +31,7 @@ namespace wpf___projekt
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            DataAccess.ReadData();
+            DataAccess.ReadData("SELECT * FROM Question WHERE id_quiz = 0");
         }
 
         private void Next_question(object sender, RoutedEventArgs e)

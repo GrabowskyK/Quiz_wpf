@@ -103,6 +103,7 @@ namespace wpf___projekt.ViewModel
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Answer_D)));
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(EnabledPreviousQuestion)));
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(EnabledNextQuestion)));
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(QuestionNumber)));
             //TODO: Zamienić ↓↓↓, usunąć z set property
             IsCheck_A = false;
             IsCheck_B = false;

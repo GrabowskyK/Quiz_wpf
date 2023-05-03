@@ -26,5 +26,15 @@ namespace wpf___projekt
             InitializeComponent();
             DataContext = new MenuViewModel();
         }
+
+        private void ListBoxItem_Selected(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void listBoxQuiz_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
     }
 }
