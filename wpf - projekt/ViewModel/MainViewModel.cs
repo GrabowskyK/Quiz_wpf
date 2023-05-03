@@ -1,7 +1,6 @@
 ﻿using System;
 using System.ComponentModel;
 using System.Linq;
-using System.Windows.Controls;
 using System.Windows.Input;
 using wpf___projekt.Model;
 using wpf___projekt.ViewModel.BaseClass;
@@ -16,7 +15,6 @@ namespace wpf___projekt.ViewModel
         private Player player = new Player();
 
 
-        private static bool isRun = true;
         private int indexList = 0;
         public MainViewModel()
         {
@@ -24,9 +22,16 @@ namespace wpf___projekt.ViewModel
             PreviousQuestion = new RelayCommand(PreviousQuestionFunc);
             StartQuiz = new RelayCommand(StarQuizFunc);
             DisableLockNextQuestionButton = new RelayCommand(DisableLockNextQuestionButtonFunc);
+            open2 = new RelayCommand(open);
         }
 
-        
+        public ICommand open2 { get; set; }
+        public void open(object obj)
+        {
+            var win = new Menu();
+            win.Show();
+
+        }
 
         private void StarQuizFunc(object obj)
         {
@@ -63,7 +68,7 @@ namespace wpf___projekt.ViewModel
                 indexList = 0;
                 LoadData(indexList);
             }
-            
+
             LoadAnswersFromQuestions();
         }
 
@@ -77,7 +82,7 @@ namespace wpf___projekt.ViewModel
             Answer_C = question.Answer_C;
             Answer_D = question.Answer_D;
             QuestionNumber = _questionNumber;
-            if(indexList == 0)
+            if (indexList == 0)
             {
                 EnabledPreviousQuestion = false;
             }
@@ -86,7 +91,7 @@ namespace wpf___projekt.ViewModel
                 EnabledPreviousQuestion = true;
             }
 
-            if(indexList ==  Question.Questions.Count - 1)
+            if (indexList == Question.Questions.Count - 1)
             {
                 EnabledNextQuestion = false;
             }
@@ -112,7 +117,7 @@ namespace wpf___projekt.ViewModel
 
             try
             {
-                if(player.answersPlayer.ElementAt(indexList) >= 0 &&  3 >= player.answersPlayer.ElementAt(indexList))
+                if (player.answersPlayer.ElementAt(indexList) >= 0 && 3 >= player.answersPlayer.ElementAt(indexList))
                 {
                     alreadyExist = true;
                     EnabledNextQuestion = true;
@@ -213,11 +218,11 @@ namespace wpf___projekt.ViewModel
         public ICommand Add { get; set; }
         public ICommand StartQuiz { get; set; }
         public ICommand DisableLockNextQuestionButton { get; set; }
-        
 
-        
 
-        
+
+
+
 
         private bool _isCheck_A;
         public bool IsCheck_A
@@ -229,7 +234,7 @@ namespace wpf___projekt.ViewModel
             set
             {
                 _isCheck_A = value;
-    
+
                 PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(IsCheck_A)));
             }
         }
@@ -277,12 +282,12 @@ namespace wpf___projekt.ViewModel
         private bool _enabledPreviousQuestion;
         public bool EnabledPreviousQuestion
         {
-            get {  return _enabledPreviousQuestion; } 
-            set 
+            get { return _enabledPreviousQuestion; }
+            set
             {
                 _enabledPreviousQuestion = value;
             }
-            
+
         }
 
         private bool _enabledNextQuestion;
@@ -307,11 +312,12 @@ namespace wpf___projekt.ViewModel
             get { return _name; }
             set { _name = value; }
         }
-        public string QuestionNumber 
+        public string QuestionNumber
         {
             get { return _questionNumber; }
-            set { 
-                _questionNumber = $"Pytanie {indexList+1} z {Question.Questions.Count}";
+            set
+            {
+                _questionNumber = $"Pytanie {indexList + 1} z {Question.Questions.Count}";
             }
 
         }

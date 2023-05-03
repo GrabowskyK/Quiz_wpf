@@ -11,6 +11,8 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using wpf___projekt.Model;
+using wpf___projekt.ViewModel;
 
 namespace wpf___projekt
 {
@@ -22,6 +24,7 @@ namespace wpf___projekt
         public Menu()
         {
             InitializeComponent();
+            DataContext = new MenuViewModel();
         }
     }
 }

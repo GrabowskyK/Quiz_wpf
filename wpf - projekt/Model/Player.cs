@@ -14,4 +14,5 @@ namespace wpf___projekt.Model
         //public List<int> AnswearsPlayers = new List<int>();
     }
 
+
 }

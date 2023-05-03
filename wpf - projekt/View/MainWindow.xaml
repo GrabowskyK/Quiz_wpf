@@ -7,10 +7,10 @@
         xmlns:vm="clr-namespace:wpf___projekt.ViewModel"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-    <Window.DataContext>
-            <vm:MainViewModel x:Name="mainViewModel"/>
-        </Window.DataContext>
-    <Grid>
+
+
+
+<Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="1*"></RowDefinition>
             <RowDefinition Height="1*"></RowDefinition>
@@ -110,5 +110,10 @@
             Grid.Row="9" 
             Grid.Column="5" 
             Command="{Binding StartQuiz}">Start Quiz</Button>
+        <Button  
+            x:Name="button3"
+            Grid.Row="7" 
+            Grid.Column="5" 
+            Command="{Binding open2}">Open2</Button>
     </Grid>
 </Window>
