@@ -33,9 +33,13 @@
             <ColumnDefinition Width="1*"></ColumnDefinition>
         </Grid.ColumnDefinitions>
 
-        <ContentControl Content="{Binding SelectedViewModel}"/>
 
-        <Label Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="4" HorizontalAlignment="Center">Pytanie 1 z x</Label>
+        <TextBox Grid.Row="1" 
+                 Grid.Column="1" 
+                 Grid.ColumnSpan="4" 
+                 VerticalAlignment="Center"
+                 HorizontalAlignment="Center"
+                 Text="{Binding QuestionNumber}"></TextBox>
         <TextBox Grid.Row="2" 
                  Grid.Column="1" 
                  Grid.ColumnSpan="4" 
@@ -83,12 +87,15 @@
         <Button  Grid.Row="8"
                  Grid.Column="2"
                  Command="{Binding PreviousQuestion}"
+                 IsEnabled="{Binding EnabledPreviousQuestion, Mode=TwoWay}"
                  >Poprzednie pytanie</Button>
         <Button 
             x:Name="button_Next_question"
             Grid.Row="8" 
             Grid.Column="4"
-            Command="{Binding NextQuestion}">Kolejne pytanie</Button>
+            Command="{Binding NextQuestion}"
+            IsEnabled="{Binding EnabledNextQuestion, Mode=TwoWay}"
+            >Kolejne pytanie</Button>
         <Button  
             x:Name="button1"
             Grid.Row="8" 

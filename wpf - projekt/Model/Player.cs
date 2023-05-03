@@ -10,7 +10,7 @@ namespace wpf___projekt.Model
     {
         private int Id;
         private int Name;
-        public List<List<int>> AnswearsPlayers = new List<List<int>>();
+        public List<int> answersPlayer = new List<int>();
         //public List<int> AnswearsPlayers = new List<int>();
     }
 

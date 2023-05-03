@@ -33,7 +33,6 @@ namespace wpf___projekt.Model
                 Question question = new Question(name, answer_A, answer_B, answer_C, answer_D, correct, id_quiz);
                 Question.Questions.Add(question);
                 //Z intem wyskakiwały błędy
-                //var item = $"{id} {name} {answer_A} {answer_B} {answer_C} {answer_D} {isCorrect_A} {isCorrect_B} {isCorrect_C} {isCorrect_D}";
             }
 
     }
