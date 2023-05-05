@@ -114,6 +114,11 @@
             x:Name="button3"
             Grid.Row="7" 
             Grid.Column="5" 
-            Command="{Binding open2}">Open2</Button>
+            Command="{Binding open2}">Open Menu</Button>
+        <Button  
+            x:Name="button4"
+            Grid.Row="6" 
+            Grid.Column="5" 
+            Command="{Binding openResult}">Open Result</Button>
     </Grid>
 </Window>

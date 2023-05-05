@@ -20,8 +20,8 @@ namespace wpf___projekt.ViewModel
         public MenuViewModel() 
         {
             loadQuiz = new RelayCommand(loadQuizies);
-            open2 = new RelayCommand(open);
-      }
+            openQuiz = new RelayCommand(openQuizFunc);
+        }
 
         private ObservableCollection<string> quizies = new ObservableCollection<string>();
         public ObservableCollection<string> Quizies
@@ -58,8 +58,8 @@ namespace wpf___projekt.ViewModel
             }
         }
 
-        public ICommand open2 { get; set; }
-        public void open(object obj)
+        public ICommand openQuiz { get; set; }
+        public void openQuizFunc(object obj)
         {
             int result = Quiz.nazwaQuiz.IndexOf(SelectedItem);
             

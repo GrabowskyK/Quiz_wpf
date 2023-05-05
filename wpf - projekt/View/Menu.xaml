@@ -45,7 +45,7 @@
         <Button
             Grid.Column="3"
             Grid.Row="4"
-            Command="{Binding open2}"
+            Command="{Binding openQuiz}"
             >Wybierz</Button>
     </Grid>
 </Window>

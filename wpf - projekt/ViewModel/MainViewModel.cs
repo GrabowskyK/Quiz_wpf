@@ -3,6 +3,7 @@ using System.ComponentModel;
 using System.Linq;
 using System.Windows.Input;
 using wpf___projekt.Model;
+using wpf___projekt.View;
 using wpf___projekt.ViewModel.BaseClass;
 
 namespace wpf___projekt.ViewModel
@@ -12,7 +13,6 @@ namespace wpf___projekt.ViewModel
         public event PropertyChangedEventHandler PropertyChanged;
 
         private Question question = new Question();
-        private Player player = new Player();
 
 
         private int indexList = 0;
@@ -23,14 +23,23 @@ namespace wpf___projekt.ViewModel
             StartQuiz = new RelayCommand(StarQuizFunc);
             DisableLockNextQuestionButton = new RelayCommand(DisableLockNextQuestionButtonFunc);
             open2 = new RelayCommand(open);
+            openResult = new RelayCommand(openResultFunc);
+
         }
 
+        public ICommand openResult { get; set; }
         public ICommand open2 { get; set; }
         public void open(object obj)
         {
             var win = new Menu();
             win.Show();
 
+        }
+
+        public void openResultFunc(object obj)
+        {
+            var win = new Result();
+            win.Show();
         }
 
         private void StarQuizFunc(object obj)
@@ -118,7 +127,7 @@ namespace wpf___projekt.ViewModel
 
             try
             {
-                if (player.answersPlayer.ElementAt(indexList) >= 0 && 3 >= player.answersPlayer.ElementAt(indexList))
+                if (Player.answersPlayer.ElementAt(indexList) >= 0 && 3 >= Player.answersPlayer.ElementAt(indexList))
                 {
                     alreadyExist = true;
                     EnabledNextQuestion = true;
@@ -154,12 +163,12 @@ namespace wpf___projekt.ViewModel
             }
             if (alreadyExist)
             {
-                player.answersPlayer.RemoveAt(indexList);
-                player.answersPlayer.Insert(indexList, chooseOption);
+                Player.answersPlayer.RemoveAt(indexList);
+                Player.answersPlayer.Insert(indexList, chooseOption);
             }
             else
             {
-                player.answersPlayer.Add(chooseOption);
+                Player.answersPlayer.Add(chooseOption);
             }
             //var result = player.answersPlayer;
         }
@@ -168,28 +177,28 @@ namespace wpf___projekt.ViewModel
         {
             try
             {
-                if (player.answersPlayer[indexList] == 0)
+                if (Player.answersPlayer[indexList] == 0)
                 {
                     IsCheck_A = true;
                     IsCheck_B = false;
                     IsCheck_C = false;
                     IsCheck_D = false;
                 }
-                else if (player.answersPlayer[indexList] == 1)
+                else if (Player.answersPlayer[indexList] == 1)
                 {
                     IsCheck_A = false;
                     IsCheck_B = true;
                     IsCheck_C = false;
                     IsCheck_D = false;
                 }
-                else if (player.answersPlayer[indexList] == 2)
+                else if (Player.answersPlayer[indexList] == 2)
                 {
                     IsCheck_A = false;
                     IsCheck_B = false;
                     IsCheck_C = true;
                     IsCheck_D = false;
                 }
-                else if (player.answersPlayer[indexList] == 3)
+                else if (Player.answersPlayer[indexList] == 3)
                 {
                     IsCheck_A = false;
                     IsCheck_B = false;
