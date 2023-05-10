@@ -39,7 +39,7 @@ namespace wpf___projekt.ViewModel
         {
             //Question.Questions.Clear();
             DataAccess.ReadData("SELECT nazwaPytania, correct FROM Question");
-            for(int i = 0; i < Question.Questions.Count-1; i++)
+            for(int i = 0; i < Question.Questions.Count; i++)
             {
                 string playerAnswer = "";
                 string correctAnswer = "";
@@ -79,14 +79,12 @@ namespace wpf___projekt.ViewModel
                 if (playerAnswer == correctAnswer)
                 {
                     points += 1;
-                    PointsString = $"Zdobyłeś/aś {points} z {Question.Questions.Count}";
                 }
-
+                PointsString = $"{points}";
                 ShowResult showResult = new ShowResult(i+1,Question.Questions.ElementAt(i).Name, playerAnswer , correctAnswer);
                 results.Add(showResult);
                 Results = results;
                 PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Results)));
-                var xd = 0;
             }
         }
 
@@ -99,7 +97,7 @@ namespace wpf___projekt.ViewModel
             }
             set
             {
-                pointsString = value;
+                pointsString = $"Zdobyłeś/aś {value} z {Question.Questions.Count}";
 
                 PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(PointsString)));
             }

@@ -39,11 +39,31 @@ namespace wpf___projekt.ViewModel
         {
             DataAccessQuiz.ReadData("SELECT * FROM Quiz");
             Quizies = Quiz.nazwaQuiz;
-            
+            EnabledLoadBaseButton = false;
+            EnabledChooseButton = true;
         }
-        
 
+        private bool enabledLoadBaseButton = true;
+        public bool EnabledLoadBaseButton
+        {
+            get { return enabledLoadBaseButton; }
+            set
+            {
+                enabledLoadBaseButton = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(EnabledLoadBaseButton)));
+            }
 
+        }
+        private bool enabledChooseButton = false;
+        public bool EnabledChooseButton
+        {
+            get { return enabledChooseButton; }
+            set
+            {
+                enabledChooseButton = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(EnabledChooseButton)));
+            }
+        }
 
         private string _selectedItem;
 
@@ -62,7 +82,8 @@ namespace wpf___projekt.ViewModel
         public void openQuizFunc(object obj)
         {
             int result = Quiz.nazwaQuiz.IndexOf(SelectedItem);
-            
+            Question.Questions.Clear();
+            Player.answersPlayer.Clear();
             DataAccess.ReadData($"SELECT * FROM Question WHERE id_quiz = {result}");
             var win = new MainWindow();
             win.Show();

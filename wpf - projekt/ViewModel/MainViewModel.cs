@@ -38,6 +38,7 @@ namespace wpf___projekt.ViewModel
 
         public void openResultFunc(object obj)
         {
+            setPlayerAnswers();
             var win = new Result();
             win.Show();
         }
@@ -49,10 +50,21 @@ namespace wpf___projekt.ViewModel
         private void NextQuestionFunc(object obj)
         {
             setPlayerAnswers();
-            //EnabledNextQuestion = false;
+            
             if (indexList < Question.Questions.Count - 1)
             {
                 indexList++;
+                try
+                {
+                    if (Player.answersPlayer.ElementAt(indexList) >= 0)
+                    {
+                        EnabledNextQuestion = true;
+                    }
+                }
+                catch
+                {
+                    EnabledNextQuestion = false;
+                }
                 LoadData(indexList);
             }
             else
@@ -166,7 +178,7 @@ namespace wpf___projekt.ViewModel
                 Player.answersPlayer.RemoveAt(indexList);
                 Player.answersPlayer.Insert(indexList, chooseOption);
             }
-            else
+            else if(chooseOption != 4)
             {
                 Player.answersPlayer.Add(chooseOption);
             }

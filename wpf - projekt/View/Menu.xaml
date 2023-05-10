@@ -28,6 +28,7 @@
         <Button Grid.Column="2" 
                 Grid.Row="2"
                 Command="{Binding loadQuiz}"
+                IsEnabled="{Binding EnabledLoadBaseButton, Mode=TwoWay}"
                 >Załaduj z bazy</Button>
         <ListBox 
             x:Name="listBoxQuiz"
@@ -46,6 +47,7 @@
             Grid.Column="3"
             Grid.Row="4"
             Command="{Binding openQuiz}"
+            IsEnabled="{Binding EnabledChooseButton, Mode=TwoWay}"
             >Wybierz</Button>
     </Grid>
 </Window>
