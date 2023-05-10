@@ -97,7 +97,7 @@ namespace wpf___projekt.ViewModel
             }
             set
             {
-                pointsString = $"Zdobyłeś/aś {value} z {Question.Questions.Count}";
+                pointsString = $"Zdobyłeś/aś {value} z {Question.Questions.Count} punktów";
 
                 PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(PointsString)));
             }

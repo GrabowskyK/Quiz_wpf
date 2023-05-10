@@ -39,10 +39,15 @@
                  Grid.ColumnSpan="4" 
                  VerticalAlignment="Center"
                  HorizontalAlignment="Center"
+                 BorderThickness="0"
                  Text="{Binding QuestionNumber}"></TextBox>
         <TextBox Grid.Row="2" 
                  Grid.Column="1" 
-                 Grid.ColumnSpan="4" 
+                 Grid.ColumnSpan="4"
+                 HorizontalAlignment="Center"
+                 VerticalAlignment="Center"
+                 BorderThickness="0"
+                 FontSize="17"
                  Text="{Binding Name}"></TextBox>
         <RadioButton Grid.Row="4" 
                   Grid.Column="1" 
@@ -101,24 +106,19 @@
             IsEnabled="{Binding EnabledNextQuestion, Mode=TwoWay}"
             >Kolejne pytanie</Button>
         <Button  
-            x:Name="button1"
-            Grid.Row="8" 
-            Grid.Column="5" 
-            Click="Button_Click">Menu</Button>
-        <Button  
             x:Name="button2"
             Grid.Row="9" 
-            Grid.Column="5" 
-            Command="{Binding StartQuiz}">Start Quiz</Button>
-        <Button  
-            x:Name="button3"
-            Grid.Row="7" 
-            Grid.Column="5" 
-            Command="{Binding open2}">Open Menu</Button>
+            Grid.Column="2"
+            Margin="25 10 25 10"
+            Command="{Binding StartQuiz}"
+            IsEnabled="{Binding EnabledStartButton,Mode=TwoWay}"
+            >Start Quiz</Button>
         <Button  
             x:Name="button4"
-            Grid.Row="6" 
-            Grid.Column="5" 
-            Command="{Binding openResult}">Open Result</Button>
+            Grid.Row="9" 
+            Grid.Column="4" 
+            Margin="25 10 25 10"
+            IsEnabled="{Binding EnabledEndButton,Mode=TwoWay}"
+            Command="{Binding openResult}">Koniec</Button>
     </Grid>
 </Window>

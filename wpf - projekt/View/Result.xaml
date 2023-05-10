@@ -22,33 +22,39 @@
         <TextBox
             Grid.Row="2"
             Grid.Column="1"
+            TextAlignment="Center"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center"
+            BorderThickness="0"
             Text="{Binding PointsString}"></TextBox>
         <ListBox 
             x:Name="listBoxQuiz"
             SelectedItem="{Binding SelectedItem}"
             ItemsSource="{Binding Results}"
             Grid.Row="1"
-            Grid.Column="1">
+            Grid.Column="1"
+            FontSize="18"
+            Padding="10">
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <TextBlock>
-                        <TextBlock.Text>
-                            <MultiBinding StringFormat = "{}{0}. {1} &#x0a;Twoja odpowiedź: {2}&#x0a;Poprawna odpowiedź: {3}">
-                                <Binding Path="Id" />
-                                <Binding Path = "NazwaPytania" />
-                                <Binding Path = "TwojaOdp" />
-                                <Binding Path = "CorrectOdp" />
-                            </MultiBinding>
-                        
-                        </TextBlock.Text>
+                            <TextBlock.Text >
+                                <MultiBinding StringFormat = "{}{0}. {1} &#x0a;Twoja odpowiedź: {2}&#x0a;Poprawna odpowiedź: {3}">
+                                    <Binding Path="Id" />
+                                    <Binding Path = "NazwaPytania" />
+                                    <Binding Path = "TwojaOdp" />
+                                    <Binding Path = "CorrectOdp" />
+                                </MultiBinding>
+                            </TextBlock.Text>
                     </TextBlock>
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
         <Button
-            Grid.Column="3"
-            Grid.Row="4"
+            Grid.Column="1"
+            Grid.Row="3"
             Command="{Binding Wyniki}"
-            >Wybierz</Button>
+            Margin="50 15 50 15"
+            >Załaduj odpowiedzi</Button>
     </Grid>
 </Window>

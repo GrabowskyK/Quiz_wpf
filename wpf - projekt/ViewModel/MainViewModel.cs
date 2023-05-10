@@ -45,6 +45,7 @@ namespace wpf___projekt.ViewModel
 
         private void StarQuizFunc(object obj)
         {
+            EnabledStartButton = false;
             LoadData(0);
         }
         private void NextQuestionFunc(object obj)
@@ -124,6 +125,8 @@ namespace wpf___projekt.ViewModel
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Answer_D)));
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(EnabledPreviousQuestion)));
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(EnabledNextQuestion)));
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(EnabledEndButton)));
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(EnabledStartButton)));
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(QuestionNumber)));
             //TODO: Zamienić ↓↓↓, usunąć z set property
             IsCheck_A = false;
@@ -230,6 +233,11 @@ namespace wpf___projekt.ViewModel
                 EnabledNextQuestion = true;
                 PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(EnabledNextQuestion)));
             }
+            else
+            {
+                EnabledEndButton = true;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(EnabledEndButton)));
+            }
 
         }
 
@@ -240,9 +248,6 @@ namespace wpf___projekt.ViewModel
         public ICommand Add { get; set; }
         public ICommand StartQuiz { get; set; }
         public ICommand DisableLockNextQuestionButton { get; set; }
-
-
-
 
 
 
@@ -321,6 +326,26 @@ namespace wpf___projekt.ViewModel
                 _enabledNextQuestion = value;
             }
 
+        }
+
+        private bool enabledEndButton = false;
+        public bool EnabledEndButton
+        {
+            get { return enabledEndButton; }
+            set
+            {
+                enabledEndButton = value;
+            }
+        }
+
+        private bool enabledStartButton = true;
+        public bool EnabledStartButton
+        {
+            get { return enabledStartButton; }
+            set
+            {
+                enabledStartButton = value;
+            }
         }
 
         private string _name;
