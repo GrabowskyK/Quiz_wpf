@@ -11,30 +11,19 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-using wpf___projekt.Model;
 using wpf___projekt.ViewModel;
 
-namespace wpf___projekt
+namespace wpf___projekt.View
 {
     /// <summary>
-    /// Logika interakcji dla klasy Menu.xaml
+    /// Logika interakcji dla klasy Result.xaml
     /// </summary>
-    public partial class Menu : Window
+    public partial class Result : Window
     {
-        public Menu()
+        public Result()
         {
             InitializeComponent();
-            DataContext = new MenuViewModel();
-        }
-
-        private void ListBoxItem_Selected(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void listBoxQuiz_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-
+            DataContext = new ResultViewModel();
         }
     }
 }

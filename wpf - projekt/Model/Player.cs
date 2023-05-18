@@ -10,6 +10,9 @@ namespace wpf___projekt.Model
     {
         private int Id;
         private int Name;
-        private int[] Answears2;
+        static public List<int> answersPlayer = new List<int>();
+        //public List<int> AnswearsPlayers = new List<int>();
     }
+
+
 }

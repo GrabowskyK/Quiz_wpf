@@ -96,6 +96,11 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Model\ShowResult.cs" />
+    <Compile Include="ViewModel\ResultViewModel.cs" />
+    <Compile Include="View\Result.xaml.cs">
+      <DependentUpon>Result.xaml</DependentUpon>
+    </Compile>
     <Page Include="View\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -105,16 +110,24 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Model\DataAccess.cs" />
+    <Compile Include="Model\DataAccessQuiz.cs" />
     <Compile Include="Model\Player.cs" />
     <Compile Include="Model\Question.cs" />
+    <Compile Include="Model\Quiz.cs" />
     <Compile Include="ViewModel\BaseClass\BaseViewModel.cs" />
     <Compile Include="ViewModel\BaseClass\RelayCommand.cs" />
+    <Compile Include="ViewModel\IMenuViewModelService.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
+    <Compile Include="ViewModel\MenuViewModel.cs" />
     <Compile Include="View\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
     <Page Include="View\Menu.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Result.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -148,6 +161,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="NewFolder1\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

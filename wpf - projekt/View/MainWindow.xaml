@@ -8,10 +8,9 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
 
-        <Window.DataContext>
-            <vm:MainViewModel x:Name="mainViewModel"/>
-        </Window.DataContext>
-    <Grid>
+
+
+<Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="1*"></RowDefinition>
             <RowDefinition Height="1*"></RowDefinition>
@@ -33,53 +32,93 @@
             <ColumnDefinition Width="2.5*"></ColumnDefinition>
             <ColumnDefinition Width="1*"></ColumnDefinition>
         </Grid.ColumnDefinitions>
-        <Label Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="4" HorizontalAlignment="Center">Pytanie 1 z x</Label>
-        <TextBox Grid.Row="2" 
+
+
+        <TextBox Grid.Row="1" 
                  Grid.Column="1" 
                  Grid.ColumnSpan="4" 
+                 VerticalAlignment="Center"
+                 HorizontalAlignment="Center"
+                 BorderThickness="0"
+                 Text="{Binding QuestionNumber}"></TextBox>
+        <TextBox Grid.Row="2" 
+                 Grid.Column="1" 
+                 Grid.ColumnSpan="4"
+                 HorizontalAlignment="Center"
+                 VerticalAlignment="Center"
+                 BorderThickness="0"
+                 FontSize="17"
                  Text="{Binding Name}"></TextBox>
-        <RadioButton Grid.Row="4" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center"></RadioButton>
+        <RadioButton Grid.Row="4" 
+                  Grid.Column="1" 
+                  x:Name="checkbox_A"
+                  VerticalAlignment="Center" 
+                  HorizontalAlignment="Center"
+                  Command="{Binding DisableLockNextQuestionButton}"
+                  IsChecked="{Binding IsCheck_A}"
+                  ></RadioButton>
         <TextBox Grid.Row="4" 
                  Grid.Column="2" 
                  Text="{Binding Answer_A}"></TextBox>
         <RadioButton Grid.Row="4" 
                      Grid.Column="3" 
-                     VerticalAlignment="Center" HorizontalAlignment="Center"></RadioButton>
+                     x:Name="checkbox_B"
+                    VerticalAlignment="Center" 
+                    HorizontalAlignment="Center"
+                    Command="{Binding DisableLockNextQuestionButton}"
+                    IsChecked="{Binding IsCheck_B}"
+                    ></RadioButton>
         <TextBox Grid.Row="4" 
                  Grid.Column="4" 
                  Text="{Binding Answer_B}"></TextBox>
         <RadioButton Grid.Row="6" 
-                     Grid.Column="1" 
-                     VerticalAlignment="Center" 
-                     HorizontalAlignment="Center"></RadioButton>
+                  Grid.Column="1" 
+                  x:Name="checkbox_C"
+                  VerticalAlignment="Center" 
+                  HorizontalAlignment="Center"
+                  Command="{Binding DisableLockNextQuestionButton}"
+                  IsChecked="{Binding IsCheck_C}"></RadioButton>
         <TextBox Grid.Row="6" 
                  Grid.Column="2" 
-                 Text="{Binding Answer_C}"></TextBox>
+                 Text="{Binding Answer_C}"
+                 ></TextBox>
         <RadioButton Grid.Row="6" 
-                     Grid.Column="3" 
-                     VerticalAlignment="Center" 
-                     HorizontalAlignment="Center"></RadioButton>
+                  Grid.Column="3" 
+                  x:Name="checkbox_D"
+                  VerticalAlignment="Center" 
+                  HorizontalAlignment="Center"
+                  IsChecked="{Binding IsCheck_D}"
+                  Command="{Binding DisableLockNextQuestionButton}"
+                  CommandParameter="3"></RadioButton>
         <TextBox Grid.Row="6" 
                  Grid.Column="4" 
                  Text="{Binding Answer_D}"></TextBox>
         <Button  Grid.Row="8"
                  Grid.Column="2"
                  Command="{Binding PreviousQuestion}"
+                 IsEnabled="{Binding EnabledPreviousQuestion, Mode=TwoWay}"
                  >Poprzednie pytanie</Button>
         <Button 
             x:Name="button_Next_question"
             Grid.Row="8" 
             Grid.Column="4"
-            Command="{Binding NextQuestion}">Kolejne pytanie</Button>
-        <Button  
-            x:Name="button1"
-            Grid.Row="8" 
-            Grid.Column="5" 
-            Click="Button_Click">Menu</Button>
+            Command="{Binding NextQuestion}"
+            IsEnabled="{Binding EnabledNextQuestion, Mode=TwoWay}"
+            >Kolejne pytanie</Button>
         <Button  
             x:Name="button2"
             Grid.Row="9" 
-            Grid.Column="5" 
-            Command="{Binding StartQuiz}">Start Quiz</Button>
+            Grid.Column="2"
+            Margin="25 10 25 10"
+            Command="{Binding StartQuiz}"
+            IsEnabled="{Binding EnabledStartButton,Mode=TwoWay}"
+            >Start Quiz</Button>
+        <Button  
+            x:Name="button4"
+            Grid.Row="9" 
+            Grid.Column="4" 
+            Margin="25 10 25 10"
+            IsEnabled="{Binding EnabledEndButton,Mode=TwoWay}"
+            Command="{Binding openResult}">Koniec</Button>
     </Grid>
 </Window>

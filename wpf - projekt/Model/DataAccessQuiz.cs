@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace wpf___projekt.Model
 {
-    public class DataAccess
+    public class DataAccessQuiz
     {
         //static SQLiteConnection conn = new SQLiteConnection(@"Data Source=C:\Users\grabe\Desktop\Question.db;Version=3");
         static SQLiteConnection conn = new SQLiteConnection(@"Data Source=C:\Users\grabe\Desktop\quiz.db;Version=3");
@@ -17,33 +17,26 @@ namespace wpf___projekt.Model
             SQLiteCommand command;
 
             command = conn.CreateCommand();
-            //command.CommandText = "SELECT * FROM Question";
-            command.CommandText = zapytanie;
+            command.CommandText = "SELECT * FROM Quiz";
             reader = command.ExecuteReader();
 
             while (reader.Read())
             {
                 long id = (long)reader["id"];
-                string name = (string)reader["nazwaPytania"];
-                string answer_A = (string)reader["odp1"];
-                string answer_B = (string)reader["odp2"];
-                string answer_C = (string)reader["odp3"];
-                string answer_D = (string)reader["odp4"];
-                long correct = (long)reader["popr_odp"];
-                long id_quiz = (long)reader["id_quiz"];
-                Question question = new Question(name, answer_A, answer_B, answer_C, answer_D, correct, id_quiz);
-                Question.Questions.Add(question);
+                string name = (string)reader["nazwa"];
+                Quiz quiz = new Quiz(name);
+                Quiz.nazwaQuiz.Add(name);
+                var result = 0;
                 //Z intem wyskakiwały błędy
             }
 
-    }
-       
+        }
         public static void ReadData(string zapytanie)
         {
             try
             {
                 conn.Open();
-                ReadData(conn, zapytanie); 
+                ReadData(conn, zapytanie);
             }
             catch (Exception ex)
             {
@@ -52,7 +45,7 @@ namespace wpf___projekt.Model
             finally //Jak pójdzie exception podczas conn to się potem zamknie
             {
                 conn.Close();
-               
+
             }
         }
     }

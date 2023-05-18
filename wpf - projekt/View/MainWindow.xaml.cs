@@ -25,11 +25,13 @@ namespace wpf___projekt
         public MainWindow()
         {
             InitializeComponent();
+
+            DataContext = new MainViewModel();
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            DataAccess.ReadData();
+            DataAccess.ReadData("SELECT * FROM Question WHERE id_quiz = 0");
         }
 
         private void Next_question(object sender, RoutedEventArgs e)
