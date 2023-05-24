@@ -54,6 +54,7 @@
             Grid.Column="1"
             Grid.Row="3"
             Command="{Binding Wyniki}"
+            IsEnabled="{Binding LoadAnswer, Mode=TwoWay}"
             Margin="50 15 50 15"
             >Załaduj odpowiedzi</Button>
     </Grid>

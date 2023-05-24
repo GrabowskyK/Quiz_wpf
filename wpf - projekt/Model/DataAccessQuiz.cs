@@ -4,6 +4,7 @@ using System.Linq;
 using System.Data.SQLite;
 using System.Text;
 using System.Threading.Tasks;
+using System.Net.NetworkInformation;
 
 namespace wpf___projekt.Model
 {
@@ -17,26 +18,68 @@ namespace wpf___projekt.Model
             SQLiteCommand command;
 
             command = conn.CreateCommand();
-            command.CommandText = "SELECT * FROM Quiz";
+            command.CommandText = zapytanie;
             reader = command.ExecuteReader();
 
             while (reader.Read())
             {
                 long id = (long)reader["id"];
-                string name = (string)reader["nazwa"];
-                Quiz quiz = new Quiz(name);
-                Quiz.nazwaQuiz.Add(name);
-                var result = 0;
+                string nazwa = (string)reader["nazwa"];
+                Quiz quiz = new Quiz(id, nazwa);
+                Quiz.nazwaQuiz.Add(nazwa);
+                Quiz.AllQuiz.Add(quiz);
                 //Z intem wyskakiwały błędy
             }
 
         }
+        
+
         public static void ReadData(string zapytanie)
         {
             try
             {
                 conn.Open();
                 ReadData(conn, zapytanie);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            finally //Jak pójdzie exception podczas conn to się potem zamknie
+            {
+                conn.Close();
+
+            }
+        }
+        
+        public static void SaveData(string zapytanie)
+        {
+            try
+            {
+                conn.Open();
+                SQLiteCommand command = conn.CreateCommand();
+                command.CommandText = zapytanie;
+                command.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            finally //Jak pójdzie exception podczas conn to się potem zamknie
+            {
+                conn.Close();
+
+            }
+        }
+
+        public static void DeleteData(string zapytanie)
+        {
+            try
+            {
+                conn.Open();
+                SQLiteCommand command = conn.CreateCommand();
+                command.CommandText = zapytanie;
+                command.ExecuteNonQuery();
             }
             catch (Exception ex)
             {

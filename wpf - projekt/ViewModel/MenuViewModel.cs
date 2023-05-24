@@ -21,6 +21,8 @@ namespace wpf___projekt.ViewModel
         {
             loadQuiz = new RelayCommand(loadQuizies);
             openQuiz = new RelayCommand(openQuizFunc);
+            Delete = new RelayCommand(DeleteFunc);
+            CreateQuiz = new RelayCommand(createQuizFunc);
         }
 
         private ObservableCollection<string> quizies = new ObservableCollection<string>();
@@ -34,13 +36,26 @@ namespace wpf___projekt.ViewModel
                 }
             }
         public ICommand loadQuiz { get; set; }
-
+        public ICommand CreateQuiz { get; set; }
+        public void createQuizFunc(object obj)
+        {
+            var qc = new QuizCreate();
+            qc.Show();
+        }
         public void loadQuizies(object obj)
         {
+            Quiz.nazwaQuiz.Clear();
             DataAccessQuiz.ReadData("SELECT * FROM Quiz");
             Quizies = Quiz.nazwaQuiz;
             EnabledLoadBaseButton = false;
             EnabledChooseButton = true;
+        }
+
+        public ICommand Delete { get; set; }
+        public void DeleteFunc(object obj)
+        {
+            DataAccessQuiz.DeleteData($"DELETE FROM Quiz WHERE nazwa = \"{SelectedItem}\";");
+            loadQuizies(obj);
         }
 
         private bool enabledLoadBaseButton = true;

@@ -49,5 +49,16 @@
             Command="{Binding openQuiz}"
             IsEnabled="{Binding EnabledChooseButton, Mode=TwoWay}"
             >Wybierz</Button>
+        <Button
+            Grid.Column="4"
+            Grid.Row="4"
+            Command="{Binding Delete}"
+            IsEnabled="{Binding EnabledChooseButton, Mode=TwoWay}"
+            >Usuń</Button>
+        <Button
+            Grid.Column="4"
+            Grid.Row="5"
+            Command="{Binding CreateQuiz}"
+            >Stwórz Quiz</Button>
     </Grid>
 </Window>

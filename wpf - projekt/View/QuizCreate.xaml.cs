@@ -11,20 +11,24 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-using wpf___projekt.Model;
 using wpf___projekt.ViewModel;
 
-namespace wpf___projekt
+namespace wpf___projekt.View
 {
     /// <summary>
-    /// Logika interakcji dla klasy Menu.xaml
+    /// Logika interakcji dla klasy QuizCreate.xaml
     /// </summary>
-    public partial class Menu : Window
+    public partial class QuizCreate : Window
     {
-        public Menu()
+        public QuizCreate()
         {
             InitializeComponent();
-            DataContext = new MenuViewModel();
+            DataContext = new QuizCreateViewModel();
+        }
+
+        private void InitializeComponent()
+        {
+            throw new NotImplementedException();
         }
     }
 }

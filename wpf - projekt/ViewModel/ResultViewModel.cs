@@ -38,6 +38,7 @@ namespace wpf___projekt.ViewModel
         private void showAnswer(object obj)
         {
             //Question.Questions.Clear();
+            LoadAnswer = false;
             DataAccess.ReadData("SELECT nazwaPytania, correct FROM Question");
             for(int i = 0; i < Question.Questions.Count; i++)
             {
@@ -126,8 +127,15 @@ namespace wpf___projekt.ViewModel
                 PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Results)));
             }
         }
-
-
+        private bool loadAnswer = true;
+        public bool LoadAnswer {
+            get { return loadAnswer; }
+            set
+            {
+                loadAnswer = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(LoadAnswer)));
+            }
+        }
         public void onPropertyChanged(params string[] properties)
         {
             if (PropertyChanged != null)

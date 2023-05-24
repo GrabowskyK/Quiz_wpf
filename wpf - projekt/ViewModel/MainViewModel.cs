@@ -1,6 +1,7 @@
 ﻿using System;
 using System.ComponentModel;
 using System.Linq;
+using System.Windows;
 using System.Windows.Input;
 using wpf___projekt.Model;
 using wpf___projekt.View;
@@ -96,6 +97,7 @@ namespace wpf___projekt.ViewModel
 
         private void LoadData(int indexList)
         {
+            try { 
             var question = Question.Questions[indexList];
             Name = question.Name;
             // Answer_A = question.Answer_A;
@@ -133,6 +135,11 @@ namespace wpf___projekt.ViewModel
             IsCheck_B = false;
             IsCheck_C = false;
             IsCheck_D = false;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Brak pytań w bazie!");
+            }
 
         }
 
