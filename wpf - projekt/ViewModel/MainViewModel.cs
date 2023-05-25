@@ -97,10 +97,9 @@ namespace wpf___projekt.ViewModel
 
         private void LoadData(int indexList)
         {
-            try { 
+            var res = Question.Questions;
             var question = Question.Questions[indexList];
             Name = question.Name;
-            // Answer_A = question.Answer_A;
             Answer_A = question.Answer_A;
             Answer_B = question.Answer_B;
             Answer_C = question.Answer_C;
@@ -135,11 +134,6 @@ namespace wpf___projekt.ViewModel
             IsCheck_B = false;
             IsCheck_C = false;
             IsCheck_D = false;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Brak pytań w bazie!");
-            }
 
         }
 

@@ -33,12 +33,14 @@
             ItemsSource="{Binding Results}"
             Grid.Row="1"
             Grid.Column="1"
-            FontSize="18"
-            Padding="10">
+            FontSize="16"
+            Padding="10"
+            
+            >
             <ListBox.ItemTemplate>
                 <DataTemplate>
-                    <TextBlock>
-                            <TextBlock.Text >
+                    <TextBlock TextWrapping="Wrap">
+                            <TextBlock.Text>
                                 <MultiBinding StringFormat = "{}{0}. {1} &#x0a;Twoja odpowiedź: {2}&#x0a;Poprawna odpowiedź: {3}">
                                     <Binding Path="Id" />
                                     <Binding Path = "NazwaPytania" />

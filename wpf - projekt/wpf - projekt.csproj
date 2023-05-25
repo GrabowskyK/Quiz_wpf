@@ -97,8 +97,12 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Model\ShowResult.cs" />
+    <Compile Include="ViewModel\EditQuizViewModel.cs" />
     <Compile Include="ViewModel\QuizCreateViewModel.cs" />
     <Compile Include="ViewModel\ResultViewModel.cs" />
+    <Compile Include="View\EditQuiz.xaml.cs">
+      <DependentUpon>EditQuiz.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\QuizCreate.xaml.cs">
       <DependentUpon>QuizCreate.xaml</DependentUpon>
     </Compile>
@@ -130,6 +134,10 @@
     <Page Include="View\Menu.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\EditQuiz.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="View\QuizCreate.xaml">
       <SubType>Designer</SubType>

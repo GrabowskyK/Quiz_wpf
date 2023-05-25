@@ -18,12 +18,12 @@ namespace wpf___projekt.View
     /// <summary>
     /// Logika interakcji dla klasy QuizCreate.xaml
     /// </summary>
-    public partial class QuizCreate : Window
+    public partial class EditQuiz : Window
     {
-        public QuizCreate()
+        public EditQuiz()
         {
             InitializeComponent();
-            DataContext = new QuizCreateViewModel();
+            DataContext = new EditQuizViewModel();
         }
 
     }

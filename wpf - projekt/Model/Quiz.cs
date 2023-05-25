@@ -20,9 +20,5 @@ namespace wpf___projekt.Model
         static public ObservableCollection<string> nazwaQuiz = new ObservableCollection<string>();
         static public List<Quiz> AllQuiz = new List<Quiz>();
 
-        public int GetQuizId()
-        {
-            return 0;
-        }
     }
 }

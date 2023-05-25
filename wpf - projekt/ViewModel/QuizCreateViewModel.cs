@@ -49,12 +49,6 @@ namespace wpf___projekt.ViewModel
             DataAccessQuiz.SaveData($"INSERT INTO Quiz (nazwa) values (\"{QuizNazwa}\")");
             DataAccessQuiz.ReadData($"SELECT * FROM Quiz"); //A co jak istnieje?
 
-            if (QuestionName != null && Answer_A != null && Answer_B != null && Answer_C != null && answer_D != null && (correctAnswer != 4 || correctAnswer != null))
-            {
-                Question question = new Question(QuestionName, Answer_A, answer_B, answer_C, answer_D, CorrectAnswer, 0);
-                Question.Questions.Add(question);
-            }
-
             long quiz_id = Quiz.AllQuiz.FirstOrDefault(quiz => quiz.Nazwa == QuizNazwa).Id;
             string text = "";
             foreach(var item in Question.Questions) {
@@ -87,6 +81,7 @@ namespace wpf___projekt.ViewModel
                 IsCheck_D = false;
                 correctAnswer = 4;
                 EnabledNextQuestion = false;
+                NumerPytania = "Pytanie " + (Question.Questions.Count()+1).ToString();
                 onPropertyChanged(nameof(EnabledNextQuestion));
             }
             else
@@ -239,6 +234,16 @@ namespace wpf___projekt.ViewModel
             {
                 correctAnswer = value;
                 IsAll();
+            }
+        }
+        private string numerPytania = "Pytanie 1";
+        public string NumerPytania
+        {
+            get { return numerPytania; }
+            set
+            {
+                numerPytania = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(NumerPytania)));
             }
         }
 

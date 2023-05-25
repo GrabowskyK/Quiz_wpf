@@ -31,5 +31,6 @@ namespace wpf___projekt.Model
         public Question() { }
 
         static public List<Question> Questions = new List<Question>();
+        static public List<Question> EditedQuestions = new List<Question>();
     }
 }
