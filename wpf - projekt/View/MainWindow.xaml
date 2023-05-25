@@ -107,17 +107,10 @@
             IsEnabled="{Binding EnabledNextQuestion, Mode=TwoWay}"
             >Kolejne pytanie</Button>
         <Button  
-            x:Name="button2"
-            Grid.Row="9" 
-            Grid.Column="2"
-            Margin="25 10 25 10"
-            Command="{Binding StartQuiz}"
-            IsEnabled="{Binding EnabledStartButton,Mode=TwoWay}"
-            >Start Quiz</Button>
-        <Button  
             x:Name="button4"
             Grid.Row="9" 
-            Grid.Column="4" 
+            Grid.Column="2"
+            Grid.ColumnSpan="3"
             Margin="25 10 25 10"
             IsEnabled="{Binding EnabledEndButton,Mode=TwoWay}"
             Command="{Binding openResult}">Koniec</Button>

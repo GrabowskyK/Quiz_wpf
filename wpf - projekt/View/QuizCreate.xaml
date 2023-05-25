@@ -102,7 +102,8 @@
         <Button 
             x:Name="button_Next_question_createView"
             Grid.Row="8" 
-            Grid.Column="4"
+            Grid.Column="2"
+            Grid.ColumnSpan="3"
             Command="{Binding NextQuestion}"
             IsEnabled="{Binding EnabledNextQuestion,Mode=TwoWay}"
             >Dodaj pytanie</Button>
@@ -113,6 +114,7 @@
             Grid.ColumnSpan="3"
             Margin="25 10 25 10"
             Command="{Binding CreateQuiz}"
+            IsEnabled="{Binding EnableCreateQuizButton}"
             >Stwórz Quiz</Button>
     </Grid>
 </Window>

@@ -18,29 +18,17 @@ namespace wpf___projekt.ViewModel
         private int points = 0; //punkty
         public ResultViewModel()
         {
-            Wyniki = new RelayCommand(showAnswer);
+            showAnswer();
         }
 
 
-        private string _selectedItem;
-        public string SelectedItem
-        {
-            get => _selectedItem;
-            set
-            {
-                _selectedItem = value;
-                onPropertyChanged(nameof(SelectedItem));
-
-                // Tutaj można wykonać dodatkową logikę w zależności od wartości SelectedItem
-            }
-        }
-        public ICommand Wyniki { get; set; }
-        private void showAnswer(object obj)
+        //Function
+        private void showAnswer()
         {
             //Question.Questions.Clear();
             LoadAnswer = false;
             DataAccess.ReadData("SELECT nazwaPytania, correct FROM Question");
-            for(int i = 0; i < Question.Questions.Count; i++)
+            for (int i = 0; i < Question.Questions.Count; i++)
             {
                 string playerAnswer = "";
                 string correctAnswer = "";
@@ -48,7 +36,7 @@ namespace wpf___projekt.ViewModel
                 {
                     case 0:
                         playerAnswer = Question.Questions.ElementAt(i).Answer_A;
-                    break;
+                        break;
                     case 1:
                         playerAnswer = Question.Questions.ElementAt(i).Answer_B;
                         break;
@@ -76,18 +64,32 @@ namespace wpf___projekt.ViewModel
                         break;
                 }
 
-                
+
                 if (playerAnswer == correctAnswer)
                 {
                     points += 1;
                 }
                 PointsString = $"{points}";
-                ShowResult showResult = new ShowResult(i+1,Question.Questions.ElementAt(i).Name, playerAnswer , correctAnswer);
+                ShowResult showResult = new ShowResult(i + 1, Question.Questions.ElementAt(i).Name, playerAnswer, correctAnswer);
                 results.Add(showResult);
                 Results = results;
                 PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Results)));
             }
         }
+
+
+
+        //Property
+        private string _selectedItem;
+        public string SelectedItem
+        {
+            get => _selectedItem;
+            set
+            {
+                _selectedItem = value;
+                onPropertyChanged(nameof(SelectedItem));
+            }
+        }   
 
         private string pointsString;
         public string PointsString

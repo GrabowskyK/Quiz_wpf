@@ -26,17 +26,25 @@ namespace wpf___projekt.ViewModel
             open2 = new RelayCommand(open);
             openResult = new RelayCommand(openResultFunc);
 
+            LoadData(0);
         }
 
         public ICommand openResult { get; set; }
         public ICommand open2 { get; set; }
+        public ICommand NextQuestion { get; set; }
+        public ICommand PreviousQuestion { get; set; }
+        public ICommand Add { get; set; }
+        public ICommand StartQuiz { get; set; }
+        public ICommand DisableLockNextQuestionButton { get; set; }
+
+        //Function
         public void open(object obj)
         {
             var win = new Menu();
             win.Show();
 
         }
-
+        
         public void openResultFunc(object obj)
         {
             setPlayerAnswers();
@@ -47,7 +55,6 @@ namespace wpf___projekt.ViewModel
         private void StarQuizFunc(object obj)
         {
             EnabledStartButton = false;
-            LoadData(0);
         }
         private void NextQuestionFunc(object obj)
         {
@@ -243,15 +250,7 @@ namespace wpf___projekt.ViewModel
         }
 
 
-
-        public ICommand NextQuestion { get; set; }
-        public ICommand PreviousQuestion { get; set; }
-        public ICommand Add { get; set; }
-        public ICommand StartQuiz { get; set; }
-        public ICommand DisableLockNextQuestionButton { get; set; }
-
-
-
+        //Property
         private bool _isCheck_A;
         public bool IsCheck_A
         {
@@ -328,6 +327,8 @@ namespace wpf___projekt.ViewModel
             }
 
         }
+
+        
 
         private bool enabledEndButton = false;
         public bool EnabledEndButton

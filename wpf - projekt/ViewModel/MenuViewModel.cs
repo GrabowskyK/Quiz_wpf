@@ -25,6 +25,7 @@ namespace wpf___projekt.ViewModel
             Delete = new RelayCommand(DeleteFunc);
             CreateQuiz = new RelayCommand(createQuizFunc);
             EditQuiz = new RelayCommand(EditQuizFunc);
+
         }
 
         private ObservableCollection<string> quizies = new ObservableCollection<string>();
@@ -37,8 +38,16 @@ namespace wpf___projekt.ViewModel
                     PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Quizies)));
                 }
             }
+
+        //Command
         public ICommand loadQuiz { get; set; }
         public ICommand CreateQuiz { get; set; }
+        public ICommand openQuiz { get; set; }
+        public ICommand Delete { get; set; }
+        public ICommand EditQuiz { get; set; }
+
+
+        //Function
         public void createQuizFunc(object obj)
         {
             var qc = new QuizCreate();
@@ -51,15 +60,79 @@ namespace wpf___projekt.ViewModel
             Quizies = Quiz.nazwaQuiz;
             EnabledLoadBaseButton = false;
             EnabledChooseButton = true;
+
         }
 
-        public ICommand Delete { get; set; }
         public void DeleteFunc(object obj)
         {
             DataAccessQuiz.DeleteData($"DELETE FROM Quiz WHERE nazwa = \"{SelectedItem}\";");
             long quiz_id = Quiz.AllQuiz.FirstOrDefault(quiz => quiz.Nazwa == SelectedItem).Id;
             DataAccess.ReadData($"DELETE FROM Question WHERE id_quiz = {quiz_id}");
             loadQuizies();
+        }
+
+
+        public void EditQuizFunc(object obj)
+        {
+            long quiz_id = Quiz.AllQuiz.FirstOrDefault(quiz => quiz.Nazwa == SelectedItem).Id;
+            Question.Questions.Clear();
+            DataAccess.ReadData($"SELECT * FROM Question WHERE id_quiz = {quiz_id};");
+            var edit = new EditQuiz();
+            edit.Show();
+        }
+ 
+        public void openQuizFunc(object obj)
+        {
+            long quiz_id = Quiz.AllQuiz.FirstOrDefault(quiz => quiz.Nazwa == SelectedItem).Id;
+            Question.Questions.Clear();
+            Player.answersPlayer.Clear();
+            DataAccess.ReadData($"SELECT * FROM Question WHERE id_quiz = {quiz_id};");
+            var win = new MainWindow();
+            win.Show();
+        }
+
+
+        //Property
+        private bool enableDeleteQuiz;
+        public bool EnableDeleteQuiz
+        {
+            get
+            {
+                return enableDeleteQuiz;
+            }
+            set
+            {
+                enableDeleteQuiz = value;
+                onPropertyChanged(nameof(EnableDeleteQuiz));
+            }
+        }
+
+        private bool enableStartQuiz;
+        public bool EnableStartQuiz
+        {
+            get
+            {
+                return enableStartQuiz;
+            }
+            set
+            {
+                enableStartQuiz = value;
+                onPropertyChanged(nameof(EnableStartQuiz));
+            }
+        }
+
+        private bool enableEditQuiz;
+        public bool EnableEditQuiz
+        {
+            get
+            {
+                return enableEditQuiz;
+            }
+            set
+            {
+                enableEditQuiz = value;
+                onPropertyChanged(nameof(EnableEditQuiz));
+            }
         }
 
         private bool enabledLoadBaseButton = true;
@@ -92,31 +165,14 @@ namespace wpf___projekt.ViewModel
             set
             {
                 _selectedItem = value;
+                EnableDeleteQuiz = true;
+                EnableEditQuiz = true;
+                EnableStartQuiz = true;
                 onPropertyChanged(nameof(SelectedItem));
-                // Tutaj można wykonać dodatkową logikę w zależności od wartości SelectedItem
             }
         }
 
-        public ICommand EditQuiz { get; set; }
-        public void EditQuizFunc(object obj)
-        {
-            long quiz_id = Quiz.AllQuiz.FirstOrDefault(quiz => quiz.Nazwa == SelectedItem).Id;
-            Question.Questions.Clear();
-            DataAccess.ReadData($"SELECT * FROM Question WHERE id_quiz = {quiz_id};");
-            var edit = new EditQuiz();
-            edit.Show();
-        }
 
-        public ICommand openQuiz { get; set; }
-        public void openQuizFunc(object obj)
-        {
-            long quiz_id = Quiz.AllQuiz.FirstOrDefault(quiz => quiz.Nazwa == SelectedItem).Id;
-            Question.Questions.Clear();
-            Player.answersPlayer.Clear();
-            DataAccess.ReadData($"SELECT * FROM Question WHERE id_quiz = {quiz_id};");
-            var win = new MainWindow();
-            win.Show();
-        }
         public void onPropertyChanged(params string[] properties)
         {
             if (PropertyChanged != null)

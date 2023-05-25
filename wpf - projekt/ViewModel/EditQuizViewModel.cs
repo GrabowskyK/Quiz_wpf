@@ -36,9 +36,12 @@ namespace wpf___projekt.ViewModel
             QuizNazwa = Quiz.AllQuiz.FirstOrDefault(quiz => quiz.Id == quiz_id).Nazwa;
         }
 
+        //Command
         public ICommand NextQuestion { get; set; }
         public ICommand PreviousQuestion { get; set; }
         public ICommand Zapisz { get; set; }
+
+        //Function
         public void ZapiszFunc(object obj)
         {
 
@@ -148,6 +151,7 @@ namespace wpf___projekt.ViewModel
             
         }
 
+        //Property
         private bool enabledPreviousQuestion;
         public bool EnabledPreviousQuestion
         {
