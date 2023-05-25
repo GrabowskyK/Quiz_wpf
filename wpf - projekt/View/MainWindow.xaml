@@ -40,6 +40,7 @@
                  VerticalAlignment="Center"
                  HorizontalAlignment="Center"
                  BorderThickness="0"
+                 IsReadOnly="True"
                  Text="{Binding QuestionNumber}"></TextBox>
         <TextBox Grid.Row="2" 
                  Grid.Column="1" 
@@ -49,6 +50,7 @@
                  BorderThickness="0"
                  FontSize="17"
                  TextWrapping="Wrap"
+                 IsReadOnly="True"
                  Text="{Binding Name}"></TextBox>
         <RadioButton Grid.Row="4" 
                   Grid.Column="1" 
@@ -60,7 +62,9 @@
                   ></RadioButton>
         <TextBox Grid.Row="4" 
                  Grid.Column="2" 
-                 Text="{Binding Answer_A}"></TextBox>
+                 Text="{Binding Answer_A}"
+                 IsReadOnly="True"
+                 ></TextBox>
         <RadioButton Grid.Row="4" 
                      Grid.Column="3" 
                      x:Name="checkbox_B"
@@ -71,7 +75,8 @@
                     ></RadioButton>
         <TextBox Grid.Row="4" 
                  Grid.Column="4" 
-                 Text="{Binding Answer_B}"></TextBox>
+                 Text="{Binding Answer_B}"
+                 IsReadOnly="True"></TextBox>
         <RadioButton Grid.Row="6" 
                   Grid.Column="1" 
                   x:Name="checkbox_C"
@@ -82,6 +87,7 @@
         <TextBox Grid.Row="6" 
                  Grid.Column="2" 
                  Text="{Binding Answer_C}"
+                 IsReadOnly="True"
                  ></TextBox>
         <RadioButton Grid.Row="6" 
                   Grid.Column="3" 
@@ -93,7 +99,8 @@
                   CommandParameter="3"></RadioButton>
         <TextBox Grid.Row="6" 
                  Grid.Column="4" 
-                 Text="{Binding Answer_D}"></TextBox>
+                 Text="{Binding Answer_D}"
+                 IsReadOnly="True"></TextBox>
         <Button  Grid.Row="8"
                  Grid.Column="2"
                  Command="{Binding PreviousQuestion}"
@@ -112,7 +119,8 @@
             Grid.Column="2"
             Grid.ColumnSpan="3"
             Margin="25 10 25 10"
-            IsEnabled="{Binding EnabledEndButton,Mode=TwoWay}"
-            Command="{Binding openResult}">Koniec</Button>
+            
+            Command="{Binding openResult}"
+            IsEnabled="{Binding EnabledEndButton,Mode=TwoWay}">Koniec</Button>
     </Grid>
 </Window>

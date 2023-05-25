@@ -29,14 +29,5 @@ namespace wpf___projekt
             DataContext = new MainViewModel();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            DataAccess.ReadData("SELECT * FROM Question WHERE id_quiz = 0");
-        }
-
-        private void Next_question(object sender, RoutedEventArgs e)
-        {
-
-        }
     }
 }

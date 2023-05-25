@@ -22,6 +22,8 @@ namespace wpf___projekt.ViewModel
         {
             NextQuestion = new RelayCommand(NextQuestionFunc);
             CreateQuiz = new RelayCommand(ExportToDatabase);
+
+            Question.Questions.Clear();
         }
 
 
@@ -34,6 +36,7 @@ namespace wpf___projekt.ViewModel
         //Function
         private void ExportToDatabase(object obj)
         {
+            EnableCreateQuizButton = false;
             DataAccessQuiz.ReadData($"SELECT * FROM Quiz");
             if (Quiz.nazwaQuiz.Contains(QuizNazwa))
             {

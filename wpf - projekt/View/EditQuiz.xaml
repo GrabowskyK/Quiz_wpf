@@ -118,6 +118,7 @@
             Grid.ColumnSpan="3"
             Grid.Column="2"
             Command="{Binding Zapisz}"
+            IsEnabled="{Binding SaveEnableButton}"
             >Zapisz</Button>
     </Grid>
 </Window>

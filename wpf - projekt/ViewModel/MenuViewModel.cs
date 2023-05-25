@@ -53,6 +53,7 @@ namespace wpf___projekt.ViewModel
             var qc = new QuizCreate();
             qc.Show();
         }
+
         public void loadQuizies()
         {
             Quiz.nazwaQuiz.Clear();
@@ -92,7 +93,6 @@ namespace wpf___projekt.ViewModel
         }
 
 
-        //Property
         private bool enableDeleteQuiz;
         public bool EnableDeleteQuiz
         {

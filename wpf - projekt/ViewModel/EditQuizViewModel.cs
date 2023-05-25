@@ -44,27 +44,14 @@ namespace wpf___projekt.ViewModel
         //Function
         public void ZapiszFunc(object obj)
         {
-
+            SaveEnableButton = false;
+            EnabledNextQuestion = false;
+            EnabledPreviousQuestion = false;
             Question.Questions.ElementAt(currentIndex).Name = QuestionName;
             Question.Questions.ElementAt(currentIndex).Answer_A = Answer_A;
             Question.Questions.ElementAt(currentIndex).Answer_B = Answer_B;
             Question.Questions.ElementAt(currentIndex).Answer_C = Answer_C;
             Question.Questions.ElementAt(currentIndex).Answer_D = Answer_D;
-            switch (CorrectOption)
-            {
-                case 0:
-                    CorrectOption = 0;
-                    break;
-                case 1:
-                    CorrectOption = 1;
-                    break;
-                case 2:
-                    CorrectOption = 2;
-                    break;
-                case 3:
-                    CorrectOption = 3;
-                    break;
-            }
             Question.Questions.ElementAt(currentIndex).Correct = CorrectOption;
             DataAccessQuiz.DeleteData($"DELETE FROM Question WHERE id_quiz = {quiz_id};");
                 string text = "";
@@ -77,6 +64,7 @@ namespace wpf___projekt.ViewModel
                 text = text.Remove(text.Length - 1, 1);
                 DataAccessQuiz.SaveData($"INSERT INTO Question (nazwaPytania,odp1,odp2,odp3,odp4,popr_odp,id_quiz) values {text};");
                 Question.Questions.Clear();
+            MessageBox.Show("Pomyślnie zapisano");
         }
 
         public void LoadAnswer(int index) 
@@ -104,7 +92,7 @@ namespace wpf___projekt.ViewModel
             Answer_B = Question.Questions.ElementAt(index).Answer_B;
             Answer_C = Question.Questions.ElementAt(index).Answer_C;
             Answer_D = Question.Questions.ElementAt(index).Answer_D;
-            Question.Questions.ElementAt(index).Correct = CorrectOption;
+
             switch (Question.Questions.ElementAt(index).Correct)
             {
                 case 0:
@@ -129,6 +117,22 @@ namespace wpf___projekt.ViewModel
             Question.Questions.ElementAt(currentIndex).Answer_B = Answer_B;
             Question.Questions.ElementAt(currentIndex).Answer_C = Answer_C;
             Question.Questions.ElementAt(currentIndex).Answer_D = Answer_D;
+            switch (Question.Questions.ElementAt(currentIndex).Correct)
+            {
+                case 0:
+                    IsCheck_A = true;
+                    break;
+                case 1:
+                    IsCheck_B = true;
+                    break;
+                case 2:
+                    IsCheck_C = true;
+                    break;
+                case 3:
+                    IsCheck_D = true;
+                    break;
+            }
+            Question.Questions.ElementAt(currentIndex).Correct = CorrectOption;
 
             currentIndex -= 1;
             LoadAnswer(currentIndex);
@@ -136,15 +140,30 @@ namespace wpf___projekt.ViewModel
         }
         public void NextQuestionFunc(object obj)
         {
-
+            
             Question.Questions.ElementAt(currentIndex).Name = QuestionName;
             Question.Questions.ElementAt(currentIndex).Answer_A = Answer_A;
             Question.Questions.ElementAt(currentIndex).Answer_B = Answer_B;
             Question.Questions.ElementAt(currentIndex).Answer_C = Answer_C;
             Question.Questions.ElementAt(currentIndex).Answer_D = Answer_D;
+            switch (Question.Questions.ElementAt(currentIndex).Correct)
+            {
+                case 0:
+                    IsCheck_A = true;
+                    break;
+                case 1:
+                    IsCheck_B = true;
+                    break;
+                case 2:
+                    IsCheck_C = true;
+                    break;
+                case 3:
+                    IsCheck_D = true;
+                    break;
+            }
             Question.Questions.ElementAt(currentIndex).Correct = CorrectOption;
-            
-            
+
+
 
             currentIndex += 1;
             LoadAnswer(currentIndex);
@@ -152,6 +171,20 @@ namespace wpf___projekt.ViewModel
         }
 
         //Property
+        private bool saveEnableButton = true;
+        public bool SaveEnableButton
+        {
+            get
+            {
+                return saveEnableButton;
+            }
+            set
+            {
+                saveEnableButton = value;
+                onPropertyChanged(nameof(SaveEnableButton));
+            }
+        }
+
         private bool enabledPreviousQuestion;
         public bool EnabledPreviousQuestion
         {

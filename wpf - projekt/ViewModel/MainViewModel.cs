@@ -47,6 +47,9 @@ namespace wpf___projekt.ViewModel
         
         public void openResultFunc(object obj)
         {
+            EnabledEndButton = false;
+            EnabledNextQuestion = false;
+            EnabledPreviousQuestion = false;    
             setPlayerAnswers();
             var win = new Result();
             win.Show();
@@ -313,6 +316,7 @@ namespace wpf___projekt.ViewModel
             set
             {
                 _enabledPreviousQuestion = value;
+                onPropertyChanged(nameof(EnabledPreviousQuestion));
             }
 
         }
@@ -324,6 +328,7 @@ namespace wpf___projekt.ViewModel
             set
             {
                 _enabledNextQuestion = value;
+                onPropertyChanged(nameof(EnabledNextQuestion));
             }
 
         }
@@ -337,6 +342,7 @@ namespace wpf___projekt.ViewModel
             set
             {
                 enabledEndButton = value;
+                onPropertyChanged(nameof(EnabledEndButton));
             }
         }
 
