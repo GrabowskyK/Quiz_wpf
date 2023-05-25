@@ -47,8 +47,22 @@ namespace wpf___projekt.ViewModel
             Question.Questions.ElementAt(currentIndex).Answer_B = Answer_B;
             Question.Questions.ElementAt(currentIndex).Answer_C = Answer_C;
             Question.Questions.ElementAt(currentIndex).Answer_D = Answer_D;
-            
-
+            switch (CorrectOption)
+            {
+                case 0:
+                    CorrectOption = 0;
+                    break;
+                case 1:
+                    CorrectOption = 1;
+                    break;
+                case 2:
+                    CorrectOption = 2;
+                    break;
+                case 3:
+                    CorrectOption = 3;
+                    break;
+            }
+            Question.Questions.ElementAt(currentIndex).Correct = CorrectOption;
             DataAccessQuiz.DeleteData($"DELETE FROM Question WHERE id_quiz = {quiz_id};");
                 string text = "";
                 foreach (var item in Question.Questions)
@@ -87,24 +101,20 @@ namespace wpf___projekt.ViewModel
             Answer_B = Question.Questions.ElementAt(index).Answer_B;
             Answer_C = Question.Questions.ElementAt(index).Answer_C;
             Answer_D = Question.Questions.ElementAt(index).Answer_D;
-            CorrectOption = Question.Questions.ElementAt(index).Correct;
-            switch (CorrectOption)
+            Question.Questions.ElementAt(index).Correct = CorrectOption;
+            switch (Question.Questions.ElementAt(index).Correct)
             {
                 case 0:
                     IsCheck_A = true;
-                    CorrectOption = 0;
                     break;
                 case 1:
-                    CorrectOption = 1;
                     IsCheck_B = true;
                     break;
                 case 2:
                     IsCheck_C = true;
-                    CorrectOption = 2;
                     break;
                 case 3:
                     IsCheck_D = true;
-                    CorrectOption = 3;
                     break;
             }
         }
@@ -116,26 +126,6 @@ namespace wpf___projekt.ViewModel
             Question.Questions.ElementAt(currentIndex).Answer_B = Answer_B;
             Question.Questions.ElementAt(currentIndex).Answer_C = Answer_C;
             Question.Questions.ElementAt(currentIndex).Answer_D = Answer_D;
-           
-            switch (CorrectOption)
-            {
-                case 0:
-                    IsCheck_A = true;
-                    CorrectOption = 0;
-                    break;
-                case 1:
-                    CorrectOption = 1;
-                    IsCheck_B = true;
-                    break;
-                case 2:
-                    IsCheck_C = true;
-                    CorrectOption = 2;
-                    break;
-                case 3:
-                    IsCheck_D = true;
-                    CorrectOption = 3;
-                    break;
-            }
 
             currentIndex -= 1;
             LoadAnswer(currentIndex);
@@ -149,28 +139,10 @@ namespace wpf___projekt.ViewModel
             Question.Questions.ElementAt(currentIndex).Answer_B = Answer_B;
             Question.Questions.ElementAt(currentIndex).Answer_C = Answer_C;
             Question.Questions.ElementAt(currentIndex).Answer_D = Answer_D;
-
-            switch (CorrectOption)
-            {
-                case 0:
-                    IsCheck_A = true;
-                    CorrectOption = 0;
-                    break;
-                case 1:
-                    CorrectOption = 1;
-                    IsCheck_B = true;
-                    break;
-                case 2:
-                    IsCheck_C = true;
-                    CorrectOption = 2;
-                    break;
-                case 3:
-                    IsCheck_D = true;
-                    CorrectOption = 3;
-                    break;
-            }
-
             Question.Questions.ElementAt(currentIndex).Correct = CorrectOption;
+            
+            
+
             currentIndex += 1;
             LoadAnswer(currentIndex);
             
@@ -271,6 +243,7 @@ namespace wpf___projekt.ViewModel
             set
             {
                 isCheck_A = value;
+                CorrectOption = 0;
                 onPropertyChanged(nameof(IsCheck_A));
                 
             }
@@ -285,6 +258,7 @@ namespace wpf___projekt.ViewModel
             set
             {
                     isCheck_B = value;
+                CorrectOption = 1;
                     onPropertyChanged(nameof(IsCheck_B));
             }
         }
@@ -299,6 +273,7 @@ namespace wpf___projekt.ViewModel
             set
             {
                     isCheck_C = value;
+                CorrectOption = 2;
                     onPropertyChanged(nameof(IsCheck_C));
             }
         }
@@ -311,7 +286,8 @@ namespace wpf___projekt.ViewModel
             }
             set
             {
-                    isCheck_D = value;
+                isCheck_D = value;
+                CorrectOption = 3;
                     onPropertyChanged(nameof(IsCheck_D));
             }
         }
